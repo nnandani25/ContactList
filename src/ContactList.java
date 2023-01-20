@@ -70,6 +70,12 @@ public class ContactList
             String lastName = input.nextLine();
             System.out.println("Phone Number:");
             String phoneNumber = input.nextLine();
+            // Ensures that the user only enters a valid phone number.
+            while(phoneNumber.length() != 10)
+            {
+                System.out.println("Phone Number (must be 10 digits):");
+                phoneNumber = input.nextLine();
+            }
             System.out.println("Grade:");
             int grade = input.nextInt();
             input.nextLine();
@@ -89,6 +95,13 @@ public class ContactList
             String lastName = input.nextLine();
             System.out.println("Phone Number:");
             String phoneNumber = input.nextLine();
+            // Ensures that the user only enters a valid phone number.
+            while(phoneNumber.length() != 10)
+            {
+                System.out.println("Phone Number (must be 10 digits):");
+                phoneNumber = input.nextLine();
+            }
+
             System.out.println("Sport:");
             String sport = input.nextLine();
             System.out.println("Jersey Number:");
@@ -195,7 +208,7 @@ public class ContactList
 
     // TODO: Write searchByFirstName
     // Searches through the contact list based on the first name it is given.
-    public String searchByFirstName(String firstName)
+    public Person searchByFirstName(String firstName)
     {
         // Loops through the contact list.
         for(int i = 0; i < contacts.size(); i++)
@@ -204,19 +217,19 @@ public class ContactList
             if (contacts.get(i).getFirstName().equalsIgnoreCase(firstName))
             {
                 // If they are equal, it returns the contact.
-                return contacts.get(i).toString();
+                return contacts.get(i);
 
             }
         }
 
-        // If the name was not found, it tells the user.
-        return firstName + " was not found in the list.";
+        // If the name was not found, it returns null.
+        return null;
     }
 
 
     // TODO: Write searchByLastName
     // Searches through the contact list based on the last name it is given.
-    public String searchByLastName(String lastName)
+    public Person searchByLastName(String lastName)
     {
         // Loops through the contact list.
         for(int i = 0; i < contacts.size(); i++)
@@ -225,16 +238,16 @@ public class ContactList
             if (contacts.get(i).getLastName().equalsIgnoreCase(lastName))
             {
                 // If they are equal, it returns the contact.
-                return contacts.get(i).toString();
+                return contacts.get(i);
             }
         }
         // If the name was not found, it tells the user.
-        return lastName + " was not found in the list.";
+        return null;
     }
 
     // TODO: Write searchByPhoneNumber
     // Searches through the contact list based on the phone number it is given.
-    public String searchByPhoneNumber(String phoneNumber)
+    public Person searchByPhoneNumber(String phoneNumber)
     {
         // Loops through the contact list.
         for(int i = 0; i < contacts.size(); i++)
@@ -243,11 +256,11 @@ public class ContactList
             if (contacts.get(i).getPhoneNumber().equals(phoneNumber))
             {
                 // If they are equal, it returns the contact.
-                return contacts.get(i).toString();
+                return contacts.get(i);
             }
         }
         // If the phone number was not found, it tells the user.
-        return phoneNumber + " was not found in the list.";
+        return null;
 
     }
 
@@ -327,7 +340,18 @@ public class ContactList
                 input = new Scanner(System.in);
                 System.out.println("Enter a first name: ");
                 String name = input.nextLine();
-                System.out.println(searchByFirstName(name));
+
+                // If searchByFirstName is null it tells the user
+                if(searchByFirstName(name) == null)
+                {
+                    System.out.println(name + " was not found in the list.");
+                }
+
+                // If the first name is found, it prints the contact.
+                else
+                {
+                    System.out.println(searchByFirstName(name));
+                }
             }
 
             else if(choice == 7)
@@ -336,7 +360,18 @@ public class ContactList
                 input = new Scanner(System.in);
                 System.out.println("Enter a last name: ");
                 String lastName = input.nextLine();
-                System.out.println(searchByLastName(lastName));
+
+                // If searchByLastName is null it tells the user
+                if(searchByLastName(lastName) == null)
+                {
+                    System.out.println(lastName + " was not found in the list.");
+                }
+
+                // If the last name is found, it prints the contact.
+                else
+                {
+                    System.out.println(searchByLastName(lastName));
+                }
             }
 
             else if(choice == 8)
@@ -346,9 +381,20 @@ public class ContactList
                  * searchByPhoneNumber method.
                  */
                 input = new Scanner(System.in);
-                System.out.println("Enter a phone number: ");
+                System.out.println("Enter a phone number (must be 10 digits): ");
                 String phoneNumber = input.nextLine();
-                System.out.println(searchByPhoneNumber(phoneNumber));
+
+                // If searchByPhoneNumber is null it tells the user.
+                if(searchByPhoneNumber(phoneNumber) == null)
+                {
+                    System.out.println(phoneNumber + " was not found in the list.");
+                }
+
+                // If the phone number is found, it prints the contact.
+                else
+                {
+                    System.out.println(searchByPhoneNumber(phoneNumber));
+                }
             }
 
             // If the user prints an invalid number it tells them.
