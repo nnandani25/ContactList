@@ -14,7 +14,7 @@ public class Person
     private String lastName;
     private String phoneNumber;
 
-    // Constructor which takes in first and last name and the phone number
+    // Constructor which takes in first and last name and the phone number.
     public Person(String firstName, String lastName, String phoneNumber)
     {
         this.firstName = firstName;
@@ -22,7 +22,7 @@ public class Person
         this.phoneNumber = phoneNumber;
     }
 
-    // Getters for the instance variables
+    // Getters for the instance variables.
     public String getFirstName()
     {
         return firstName;

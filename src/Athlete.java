@@ -1,6 +1,5 @@
 public class Athlete extends Person
 {
-
     private String sport;
     private int jerseyNumber;
 
