@@ -41,6 +41,6 @@ public class Person
     // ToString method which prints out the contact of a person.
     public String toString()
     {
-        return firstName.toUpperCase() + " " +  lastName.toUpperCase() + " " + phoneNumber;
+        return firstName.toUpperCase() + " " +  lastName.toUpperCase() + " - #" + phoneNumber;
     }
 }

@@ -129,12 +129,16 @@ public class ContactList
             // Goes through contact list, starting at 1.
             for(int i = 1; i < n; i++)
             {
-                // Goes through the contact list minus i, because on each pass, 1 more card is sorted, so you wouldn't
-                // Need to keep on looping through cards that were already sorted.
+                /**
+                 * Goes through the contact list minus i, because on each pass, 1 more card is sorted, so you wouldn't
+                 * need to keep on looping through cards that were already sorted.
+                 */
                 for(int j = 0; j < n - i; j++)
                 {
-                    // If the first name of the person is alphabetically lower than the person next in the list than it
-                    // Switches them.
+                    /**
+                     * If the first name of the person is alphabetically lower than the person next in the list than it
+                     * switches them.
+                     */
                     if(contacts.get(j).getFirstName().compareToIgnoreCase(contacts.get(j+1).getFirstName()) > 0 )
                     {
                         // Switches the person with the next person in the list.
@@ -148,18 +152,13 @@ public class ContactList
 
         }
 
-        // If the user enters a 1, it will sort the contact list by last name.
+        // If the user enters a 1, it will sort the contact list by last name, and goes through the same process as above.
         if(sortBy == 1)
         {
-            // Goes through contact list, starting at 1.
             for(int i = 1; i < n; i++)
             {
-                // Goes through the contact list minus i, because on each pass, 1 more card is sorted, so you wouldn't
-                // Need to keep on looping through cards that were already sorted.
                 for(int j = 0; j < n - i; j++)
                 {
-                    // If the last name of the person is alphabetically lower than the person next in the list than it
-                    // Switches them.
                     if(contacts.get(j).getLastName().compareToIgnoreCase(contacts.get(j+1).getLastName()) > 0 )
                     {
                         // Switches the person with the next person in the list.
@@ -173,18 +172,13 @@ public class ContactList
 
         }
 
-        // If the user enter 2, it sorts the contact list by phone number.
+        // If the user enter 2, it sorts the contact list by phone number and goes through the same process as above.
         if(sortBy == 2)
         {
-            // Goes through contact list, starting at 1.
             for(int i = 1; i < n; i++)
             {
-                // Goes through the contact list minus i, because on each pass, 1 more card is sorted, so you wouldn't
-                // Need to keep on looping through cards that were already sorted.
                 for(int j = 0; j < n - i; j++)
                 {
-                    // If the phone number of the person is alphabetically lower than the person next in the list than it
-                    // Switches them.
                     if(contacts.get(j).getPhoneNumber().compareToIgnoreCase(contacts.get(j+1).getPhoneNumber()) > 0 )
                     {
                         // Switches the person with the next person in the list.
@@ -216,36 +210,44 @@ public class ContactList
         }
 
         // If the name was not found, it tells the user.
-        return firstName + "was not found in the list.";
+        return firstName + " was not found in the list.";
     }
 
 
     // TODO: Write searchByLastName
+    // Searches through the contact list based on the last name it is given.
     public String searchByLastName(String lastName)
     {
+        // Loops through the contact list.
         for(int i = 0; i < contacts.size(); i++)
         {
+            // Checks if the last name of the contact the loop is currently on is equal to the last name the user entered.
             if (contacts.get(i).getLastName().equalsIgnoreCase(lastName))
             {
+                // If they are equal, it returns the contact.
                 return contacts.get(i).toString();
-
             }
         }
-        return lastName + "was not found in the list.";
+        // If the name was not found, it tells the user.
+        return lastName + " was not found in the list.";
     }
 
     // TODO: Write searchByPhoneNumber
+    // Searches through the contact list based on the phone number it is given.
     public String searchByPhoneNumber(String phoneNumber)
     {
+        // Loops through the contact list.
         for(int i = 0; i < contacts.size(); i++)
         {
+            // Checks if the phone number of the contact the loop is currently on is equal to the phone number the user entered.
             if (contacts.get(i).getPhoneNumber().equals(phoneNumber))
             {
+                // If they are equal, it returns the contact.
                 return contacts.get(i).toString();
-
             }
         }
-        return phoneNumber + "was not found in the list.";
+        // If the phone number was not found, it tells the user.
+        return phoneNumber + " was not found in the list.";
 
     }
 
@@ -255,10 +257,13 @@ public class ContactList
     public void listStudents()
     {
         // TODO: Complete the listStudents method
+        // Loops through the contacts arrayList.
         for(int i = 0; i < contacts.size(); i++)
         {
+            // Checks if the contact it is on is a Student and prints it out if it is.
             if(contacts.get(i) instanceof Student)
             {
+                // Prints out the contact is it is a Student.
                 System.out.println(contacts.get(i));
             }
         }
@@ -268,46 +273,57 @@ public class ContactList
      * Loops providing menu options to the user
      * until the user exits
      */
+    // TODO: Complete the run method
     public void run()
     {
+        // Prompts the user.
         Scanner input = new Scanner(System.in);
         System.out.println("Welcome to your Contacts List");
         System.out.println("Please pick from the following menu options");
         printMenuOptions();
         int choice = input.nextInt();
         input.nextLine();
+
+        // Loops through until the user presses 0 and lets the user pick the number they want to choose.
         while(choice != 0)
         {
             if(choice == 1)
             {
+                // Calls addContact.
                 addContact();
             }
 
             else if(choice == 2)
             {
+                // Calls the sort and the printContacts method.
                 sort(0);
                 printContacts();
             }
 
             else if(choice == 3)
             {
+                // Calls the sort and the print Contacts method.
                 sort(1);
                 printContacts();
             }
 
             else if(choice == 4)
             {
+                // Calls the sort and the print Contacts method.
                 sort(2);
                 printContacts();
 
             }
+
             else if(choice == 5)
             {
+                // Calls the listStudents method.
                 listStudents();
             }
 
             else if(choice == 6)
             {
+                // Prompts the user to enter a name and then uses that as the parameters for the searchByFirstName method.
                 input = new Scanner(System.in);
                 System.out.println("Enter a first name: ");
                 String name = input.nextLine();
@@ -316,6 +332,7 @@ public class ContactList
 
             else if(choice == 7)
             {
+                // Prompts the user to enter a name and then uses that as the parameters for the searchByLastName method.
                 input = new Scanner(System.in);
                 System.out.println("Enter a last name: ");
                 String lastName = input.nextLine();
@@ -324,24 +341,28 @@ public class ContactList
 
             else if(choice == 8)
             {
+                /**
+                 * Prompts the user to enter a phone number and then uses that as the parameters for the
+                 * searchByPhoneNumber method.
+                 */
                 input = new Scanner(System.in);
                 System.out.println("Enter a phone number: ");
                 String phoneNumber = input.nextLine();
                 System.out.println(searchByPhoneNumber(phoneNumber));
             }
 
+            // If the user prints an invalid number it tells them.
             else
             {
                 System.out.println("Invalid Entry. Please try again: ");
             }
 
+            // Repeats the prompt until the user enters 0.
             System.out.println("Please pick from the following menu options");
             printMenuOptions();
             choice = input.nextInt();
             input.nextLine();
         }
-
-        // TODO: Complete the run method
     }
 
     public static void main(String[] args)
