@@ -358,10 +358,11 @@ public class ContactList
             }
 
             // Repeats the prompt until the user enters 0.
-            System.out.println("Please pick from the following menu options");
+            System.out.println("\nPlease pick from the following menu options");
             printMenuOptions();
             choice = input.nextInt();
             input.nextLine();
+            System.out.println();
         }
     }
 
