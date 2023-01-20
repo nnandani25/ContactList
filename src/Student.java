@@ -30,7 +30,7 @@ public class Student extends Person
     @Override
     public String toString()
     {
-        // Calls the superclass constructor and also prints out the grade.
+        // Calls the superclass constructor, and it also prints out the grade.
         return super.toString() + " Grade: " + grade;
     }
 }
